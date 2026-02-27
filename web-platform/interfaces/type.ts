@@ -1,6 +1,4 @@
 
-// --- 1. Сутності Бази Даних (Database Entities) ---
-
 export interface User {
   id: string;
   username: string;
@@ -14,7 +12,7 @@ export interface Product {
   description: string | null;
   quantity: number;
   unit: string;
-  expiryDate: string | Date; // Рядок з форми або об'єкт Date з бази
+  expiryDate: string | Date; 
   ownerId: string;
   createdAt?: Date;
 }
@@ -26,16 +24,11 @@ export interface Message {
   createdAt?: Date;
 }
 
-// --- 2. Розширення типів NextAuth (Module Augmentation) ---
-// Це позбавляє нас від 'any' при зверненні до session.user.id або token.id
-
-
-// --- 3. Типи для створення даних (Utility Types) ---
 
 export type NewProduct = Omit<Product, 'id' | 'createdAt'>;
 export type NewUser = Omit<User, 'id' | 'createdAt'>;
 
-// --- 4. Стейт-інтерфейси Zustand (Store States) ---
+
 
 export interface AuthState {
   user: User | null;

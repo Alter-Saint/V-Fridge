@@ -78,10 +78,10 @@ export default function Chat() {
   };
 
   return (
-    /* ГОЛОВНИЙ КОНТЕЙНЕР: фіксована висота для роботи overflow */
+
     <div className="flex flex-col h-150 w-full max-w-2xl mx-auto border rounded-2xl bg-white shadow-xl overflow-hidden font-sans border-slate-200">
       
-      {/* HEADER: фіксований зверху */}
+
       <div className="flex-none p-4 border-b bg-slate-50/80 backdrop-blur-sm flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <div className="bg-orange-100 p-2 rounded-lg">
@@ -105,7 +105,7 @@ export default function Chat() {
         </Button>
       </div>
 
-      {/* CHAT AREA: flex-1 + overflow-y-auto для внутрішньої прокрутки */}
+  
       <div 
         ref={scrollContainerRef}
         className="flex-1 overflow-y-auto p-4 space-y-6 bg-slate-50/30 scroll-smooth custom-scrollbar"
@@ -127,7 +127,6 @@ export default function Chat() {
                       ? "bg-white border-slate-100 rounded-tl-none text-slate-700" 
                       : "bg-orange-500 text-white border-orange-400 rounded-tr-none"
                   }`}>
-                    {/* ОБГОРТКА ДЛЯ СТИЛІЗАЦІЇ MARKDOWN (рішення проблеми className) */}
                     <div className={`prose prose-sm max-w-none wrap-break-word ${isAI ? "text-slate-700" : "prose-invert text-white"}`}>
                       <ReactMarkdown 
                         components={{
@@ -162,7 +161,6 @@ export default function Chat() {
         )}
       </div>
 
-      {/* INPUT AREA: фіксована знизу */}
       <form onSubmit={handleSend} className="flex-none p-4 bg-white border-t flex gap-2 shrink-0">
         <Input 
           className="rounded-xl border-slate-200 focus:ring-orange-500 h-11 transition-all placeholder:text-slate-400"
