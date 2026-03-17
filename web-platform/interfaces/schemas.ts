@@ -9,17 +9,19 @@ export const signUpSchema = z.object({
 
 
 export const productSchema = z.object({
-  name: z.string().min(1, "Назва обов'язкова").max(255),
-  description: z.string().optional().nullable(),
-  
-  quantity: z.coerce.number().min(0).transform((val) => String(val)),
-  unit: z.string().min(1).max(20),
- 
-  expiryDate: z.string()
-    .optional()
-    .nullable()
-    .refine((val) => !val || !isNaN(Date.parse(val)), "Невірний формат дати")
-    .transform((val) => val ? new Date(val).toISOString() : null),
+ name: z.string().min(2, "Назва занадто коротка"),
+  quantity: z.number().positive("Кількість має бути більша за 0"),
+  unit: z.string(),
+  expiryDate: z.string().refine((val) => {
+    if (!val) return true; 
+    const date = new Date(val);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date >= today;
+  }, {
+    message: "Продукт вже зіпсувався або дата введена некоректно"
+  }),
+  ownerId: z.string()
 });
 
 

@@ -34,7 +34,15 @@ export function AddProducts() {
       alert("Ви не авторизовані. Спробуйте перелогінитись.");
       return;
     }
+    const selectedDate = new Date(formData.expiryDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
+    if (selectedDate < today) {
+      const confirmAdd = confirm("⚠️ Продукт вже протермінований. Ти впевнений, що хочеш його додати?");
+      if (!confirmAdd) return;
+    }
+    
     setIsLoading(true);
 
     const payload = {
