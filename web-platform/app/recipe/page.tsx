@@ -11,11 +11,6 @@ export default function RecipePage() {
       <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col gap-6">
         
         <header className="flex flex-col items-center space-y-2 shrink-0">
-          <div className="flex items-center gap-2 bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">
-            <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-widest text-primary">Gemini 1.5 Flash</span>
-          </div>
-          
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-black tracking-tighter">
               AI Recipe Assistant
