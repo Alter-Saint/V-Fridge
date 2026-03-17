@@ -6,7 +6,7 @@
 
 ## Features
 
-* **AI Chef Assistant:** Recipe generation using **Gemini 1.5 Flash** that intelligently considers your current inventory.
+* **AI Chef Assistant:** Recipe generation using **Gemini** that intelligently considers your current inventory.
 * **Smart Inventory:** Seamlessly add products with quantity, units of measurement, and expiration date tracking.
 * **Self-Destructing History:** Automatic chat history cleanup after 24 hours to ensure privacy and optimize storage.
 * **Performance Caching:** Integrated **Redis (Upstash)** for near-instant access to chat history and efficient **Rate Limiting**.
