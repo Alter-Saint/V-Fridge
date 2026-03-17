@@ -70,8 +70,9 @@ export async function PATCH(req: Request) {
       .update(products)
       .set({
         ...updates,
-        quantity: updates.quantity ? String(updates.quantity) : undefined,
-        expiryDate: updates.expiryDate ? new Date(updates.expiryDate).toISOString() : undefined,
+       quantity: updates.quantity ? String(updates.quantity) : undefined,
+       expiryDate: updates.expiryDate ? new Date(updates.expiryDate).toISOString() : undefined,
+       ownerId: session.user.id ? Number(session.user.id) : undefined,
       })
       .where(and(eq(products.id, id), eq(products.ownerId, Number(session.user.id))))
       .returning();
