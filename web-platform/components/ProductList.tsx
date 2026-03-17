@@ -84,7 +84,7 @@ export function ProductList() {
             <Refrigerator className="h-10 w-10 text-muted-foreground/40" />
         </div>
         <h3 className="text-xl font-bold">Холодильник порожній</h3>
-        <p className="text-muted-foreground max-w-[200px] mx-auto mt-2">Час додати перші продукти для контролю</p>
+        <p className="text-muted-foreground max-w-50 mx-auto mt-2">Час додати перші продукти для контролю</p>
       </div>
     );
   }

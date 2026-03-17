@@ -1,11 +1,14 @@
 'use client';
 import { AddProducts } from "@/components/add-products";
 import { ProductList } from "@/components/ProductList";
+import { products } from "@/lib/db/schema";
 import { useSession } from "next-auth/react";
+import { useProductStore } from "@/store/useVFridgeStore";
 
 export default function DashBoard() {
   const { data: session } = useSession();
-
+  const products = useProductStore((state) => state.products);
+  
   return (
     <div className="min-h-screen w-full bg-background p-4 md:p-8 lg:p-12">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -33,9 +36,9 @@ export default function DashBoard() {
               <h2 className="text-xl font-bold mb-4">Статистика</h2>
               <div className="space-y-4">
                 <div className="p-4 rounded-xl bg-secondary/30 border border-secondary">
-                  <p className="text-sm text-muted-foreground">Всього продуктів</p>
-                  <p className="text-2xl font-bold italic">Завантаження...</p>
-                </div>
+                <p className="text-sm text-muted-foreground">Всього продуктів</p>
+                <p className="text-2xl font-bold italic">{products.length}</p>
+              </div>
               </div>
             </div>
           </aside>
