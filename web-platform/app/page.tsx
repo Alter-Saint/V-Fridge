@@ -7,24 +7,52 @@ export default function DashBoard() {
   const { data: session } = useSession();
 
   return (
-    <div className="h-full w-full flex flex-col items-center p-6 overflow-hidden">
-      <div className="text-center mb-8 shrink-0">
-        <h1 className="text-4xl font-extrabold tracking-tight">
-          {session?.user?.username ? `Вітаємо, ${session.user.username}!` : "Dashboard Page"}
-        </h1>
-        <p className="text-muted-foreground">Керуйте вашим холодильником V-Fridge</p>
+    <div className="min-h-screen w-full bg-background p-4 md:p-8 lg:p-12">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="space-y-1">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tighter">
+              {session?.user?.username ? `Вітаємо, ${session.user.username}!` : "Dashboard"}
+            </h1>
+            <p className="text-lg text-muted-foreground font-medium">
+              Керуйте вашим холодильником V-Fridge
+            </p>
+          </div>
+          <div className="hidden md:block">
+             <AddProducts />
+          </div>
+        </header>
+
+        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <aside className="lg:col-span-4 space-y-6 order-2 lg:order-1">
+            <div className="md:hidden w-full">
+              <AddProducts />
+            </div>
+            <div className="rounded-2xl border bg-card p-6 shadow-sm">
+              <h2 className="text-xl font-bold mb-4">Статистика</h2>
+              <div className="space-y-4">
+                <div className="p-4 rounded-xl bg-secondary/30 border border-secondary">
+                  <p className="text-sm text-muted-foreground">Всього продуктів</p>
+                  <p className="text-2xl font-bold italic">Завантаження...</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <section className="lg:col-span-8 order-1 lg:order-2">
+            <div className="rounded-2xl border shadow-xl bg-card overflow-hidden">
+              <div className="p-6 border-b bg-muted/30">
+                <h3 className="font-bold text-lg">Ваш інвентар</h3>
+              </div>
+              <div className="p-4 md:p-6 min-h-100">
+                <ProductList />
+              </div>
+            </div>
+          </section>
+        </main>
+
       </div>
-
-      <section className="w-full max-w-4xl border rounded-xl shadow-lg bg-card flex flex-col overflow-hidden min-h-0">
-        <div className="p-6 border-b shrink-0 flex flex-col items-center gap-4">
-          <p className="font-medium">Додати новий продукт</p>
-          <AddProducts />
-        </div>
-
-        <div className="flex-1 overflow-y-auto p-6 bg-secondary/5">
-           <ProductList />
-        </div>
-      </section>
     </div>
   );
 }
